@@ -8,6 +8,7 @@ app.use(cors())
 app.options('*', cors())
 
 var libro_routes = require('./routes/libroRoute');
+var usuario_routes = require('./routes/usuarioRoute');
 
 
 const mongoose = require('mongoose')
@@ -33,6 +34,7 @@ app.post('/api/persona',(req,res)=>{
 }) */
 
 app.use('/api', libro_routes);
+app.use('api/',usuario_routes);
 
 
 mongoose.connect('mongodb+srv://DiegoMunoz:colocolo11@cluster0-gonmb.mongodb.net/libro?retryWrites=true&w=majority',(err, res)=>{
