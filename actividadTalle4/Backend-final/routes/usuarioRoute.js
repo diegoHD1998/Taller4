@@ -10,7 +10,8 @@ var usuarioController = require('../controllers/usuarioController');
 var api = express.Router();
  
 // Creamos una ruta de tipo GET para el método de pruebas
-api.post('/libro1', usuarioController.guardarUsuario);
+api.post('/registrar', usuarioController.guardarUsuario);
+api.get('/mostrar', usuarioController.mostrarUsuario);
 
 
 

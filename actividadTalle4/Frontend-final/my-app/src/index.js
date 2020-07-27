@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import SingIn from './views/login'
+/* import SingIn from './views/login' */
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {<SingIn/>}
+    {/* {<SingIn/>} */}
   </React.StrictMode>,
   document.getElementById('root')
 );
