@@ -12,7 +12,7 @@ function guardarUsuario(req, res){
     user.correoUser = req.body.correoUser
     user.passUser = req.body.passUser
 
-    user.save((err, UsuarioRegistrado)=>{
+    user.save((err, usuarioGuardado)=>{
         if (err) res.status(500).send(`Error base de datos ${err}`)
         res.status(200).send({usuarioRegistrado: usuarioGuardado})
     })

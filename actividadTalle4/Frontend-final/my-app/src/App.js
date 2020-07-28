@@ -2,14 +2,18 @@
 import React from "react";
 import Form from './views/form';
 import Table from './views/Tabla';
-/* import Register from './components/register';
-import Login from './components/login'; */
+import Register from './views/registrar'; 
+import Login from './views/login'; 
 
 export default function App() {
   return (
     <div>
-      <Form></Form>
-      <Table></Table>
+      {/* <Form></Form>
+      <Table></Table> */}
+
+      {/* <Login></Login> */}
+
+      <Register></Register>
   </div>
   );
 }

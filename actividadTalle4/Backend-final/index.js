@@ -34,7 +34,7 @@ app.post('/api/persona',(req,res)=>{
 }) */
 
 app.use('/api', libro_routes);
-app.use('api/',usuario_routes);
+app.use('/api',usuario_routes);
 
 
 mongoose.connect('mongodb+srv://DiegoMunoz:colocolo11@cluster0-gonmb.mongodb.net/libro?retryWrites=true&w=majority',(err, res)=>{
