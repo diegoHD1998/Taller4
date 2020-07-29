@@ -1,6 +1,7 @@
 'use strict'
  
 // AQUI Cargamos el modelo para usarlo posteriormente en la siguiente clase
+const bcrypt = require('bcrypt-nodejs')
 var Usuario1 = require('../models/usuario');
 
 

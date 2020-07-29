@@ -9,11 +9,11 @@ export default function App() {
   return (
     <div>
       {/* <Form></Form>
-      <Table></Table> */}
+      <Table></Table>  */}
 
-      {/* <Login></Login> */}
-
+      <Login></Login> 
       <Register></Register>
+      
   </div>
   );
 }
