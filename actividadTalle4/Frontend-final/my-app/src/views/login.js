@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Registro from './registrar';
+import Collapse from '@material-ui/core/Collapse';
 
 function Copyright() {
   return (
@@ -48,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const [modoregistro,setModoregistro] = useState(false);
+
+  const registro = () =>{
+
+    setModoregistro(true);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -102,13 +110,21 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+            <Link href="#" variant="body2" onClick={registro}>
+                {"Nuevo usuario"}
               </Link>
             </Grid>
           </Grid>
         </form>
+
+        <Collapse in={modoregistro}>
+          <Registro    setModoregistro={setModoregistro} />
+      </Collapse>
+
+       
       </div>
+
+      
       <Box mt={8}>
         <Copyright />
       </Box>

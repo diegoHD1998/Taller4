@@ -2,7 +2,7 @@
 import React from "react";
 import Form from './views/form';
 import Table from './views/Tabla';
-import Register from './views/registrar'; 
+import Register from './views/registrar';  
 import Login from './views/login'; 
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
       <Table></Table>  */}
 
       <Login></Login> 
-      <Register></Register>
+      
       
   </div>
   );
