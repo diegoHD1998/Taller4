@@ -17,7 +17,7 @@ import Container from '@material-ui/core/Container';
 
 
 const NewUser =({
-    setModoregistro
+    setModoregistro  
     
 }
 ) => {
@@ -124,8 +124,8 @@ const NewUser =({
     
     </form>
 
-    <button onClick={() => setModoregistro(false)}>
-        CERRAR
+    <button onClick={() => setModoregistro(false)}> {/* Collapse */}
+        CERRAR 
       </button>
 
 
@@ -134,4 +134,4 @@ const NewUser =({
   );
 }
 
-export default NewUser;
+export default NewUser; {/* Collapse */}

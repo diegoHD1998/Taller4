@@ -12,6 +12,7 @@ var api = express.Router();
 // Creamos una ruta de tipo GET para el método de pruebas
 api.post('/registrar', usuarioController.guardarUsuario);
 api.get('/mostrar', usuarioController.mostrarUsuario);
+api.post('/validar', usuarioController.validar);
 
 
 

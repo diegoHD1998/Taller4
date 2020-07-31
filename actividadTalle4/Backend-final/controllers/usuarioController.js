@@ -3,7 +3,8 @@
 // AQUI Cargamos el modelo para usarlo posteriormente en la siguiente clase
 const bcrypt = require('bcrypt-nodejs')
 var Usuario1 = require('../models/usuario');
-const servicio = require('../services/index1')
+const servicio = require('../services/index1');
+const jwt = require ('jsonwebtoken')
 
 
 function guardarUsuario(req, res){
@@ -23,22 +24,23 @@ function guardarUsuario(req, res){
 
 function validar(req, res) {
 
+  let email= req.body.correoUser;
+  let password = req.body.passUser;
 
-  var password = req.body.passUser;
 
-
-  Usuario1.findOne({'mail': req.body.correoUser}, (err, user) => {
+  Usuario1.findOne({correoUser:email}, (err, user) => {
       if (err) return res.status(500).send({ mensaje: 'error al realizar la peticion' })
       if (!user) return res.status(401).send({ mensaje: 'Error usuario no existe' })
 
 
-      bcrypt.compare(password, user.pass, function(error, isMatch) {
+      bcrypt.compare(password, user.passUser, function(error, isMatch) {
           if (error) {
               res.status(500).send(`Error al validar usuario> ${error}`)
           } else if (!isMatch) {
-              res.status(401).send({ 'mensaje':'incorrecto'})
+              res.status(401).send({ 'mensaje':'Clave incorrecto'})
           } else {
-              res.status(200).send({ 'mensaje':'correcto','token':servicio.createToken(user)})
+            var token = jwt.sign({user},'clave');
+              res.status(200).send({ 'mensaje':'correcto','token':token})
 
           }
         })
