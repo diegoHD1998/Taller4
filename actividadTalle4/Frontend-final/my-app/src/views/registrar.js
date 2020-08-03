@@ -14,6 +14,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Swal from 'sweetalert2';
+
 
 
 const NewUser =({
@@ -29,7 +31,12 @@ const NewUser =({
     .then(
       (response)=>{
         console.log(response.data);
-        /* cargar(); */
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuario Registrado',
+          text: 'El usuario a sido registrado con exito'
+        })
       }
     )
     .catch((error)=>{
@@ -42,8 +49,11 @@ const NewUser =({
   
   return (
     <div>
+      <Container component="main" maxWidth="xs">
+        <Typography component="h1" variant="h5">
+        Registrar Usuario
+        </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-      {/* <input type="text" placeholder="nombreUser" name="nombreUser" ref={register} /> */}
       <Grid container spacing={1}>
       <Grid item xs={6}>
       <TextField
@@ -60,7 +70,7 @@ const NewUser =({
             inputRef={register}
           />
           </Grid>
-      {/* <input type="text" placeholder="apellidoUser" name="apellidoUser" ref={register} /> */}
+
       <Grid item xs={6}>
       <TextField
             variant="outlined"
@@ -76,7 +86,7 @@ const NewUser =({
             inputRef={register}
           />
           </Grid>
-      {/* <input type="email" placeholder="correoUser" name="correoUser" ref={register} /> */}
+
       <Grid item xs={12}>
       <TextField
             variant="outlined"
@@ -92,7 +102,7 @@ const NewUser =({
             inputRef={register}
           />
           </Grid>
-      {/* <input type="password" placeholder="passUser" name="passUser" ref={register} /> */}
+
       <Grid item xs={12}>
       <TextField
             variant="outlined"
@@ -115,20 +125,25 @@ const NewUser =({
       <Grid item xs={12} >
           <Button 
           type="submit" 
+          fullwidth
           variant="contained" 
           color="primary" 
-          fullwidth >
+          size="large">
             Enviar
           </Button>
         </Grid>
     
     </form>
+    <br></br>
+      <Button 
+          onClick={() => setModoregistro(false)}
+          variant="contained" 
+          color="secondary"
+          >
+            Cerrar
+          </Button>
 
-    <button onClick={() => setModoregistro(false)}> {/* Collapse */}
-        CERRAR 
-      </button>
-
-
+    </Container>
     </div>
 
   );

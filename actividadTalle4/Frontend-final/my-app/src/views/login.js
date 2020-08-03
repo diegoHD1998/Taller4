@@ -14,6 +14,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Registro from './registrar';
 import Collapse from '@material-ui/core/Collapse';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+
 
 function Copyright() {
   return (
@@ -57,6 +61,37 @@ export default function SignIn() {
     setModoregistro(true);
   }
 
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+    axios
+    .post("http://localhost:5000/api/validar",data)
+    .then(
+      
+      (response)=>{
+        console.log(response.data);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuario Validado',
+          text: 'El usuario fue validado con exito'
+        })
+
+        
+      }
+    )
+    .catch((error)=>{
+      console.log(error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Usuario No Validado',
+        text: 'El correo o contraseña ingresada no corresponde'
+      })
+    });
+    
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -65,34 +100,36 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Iniciar Sesion
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="correoUser"
             label="Email Address"
-            name="email"
+            name="correoUser"
             autoComplete="email"
             autoFocus
+            inputRef={register}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            name="password"
+            name="passUser"
             label="Password"
             type="password"
-            id="password"
+            id="passUser"
             autoComplete="current-password"
+            inputRef={register}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="Recordar"
           />
           <Button
             type="submit"
@@ -106,7 +143,7 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+               Olvido su Contraseña?
               </Link>
             </Grid>
             <Grid item>

@@ -41,7 +41,6 @@ function validar(req, res) {
           } else {
             var token = jwt.sign({user},'clave');
               res.status(200).send({ 'mensaje':'correcto','token':token})
-
           }
         })
   })
